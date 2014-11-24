@@ -1,9 +1,8 @@
 # This module contains/defines the classes and functions used in assignment 5
 # Author: Israel Malkin (im965)
 
-#import 
-from myexceptions import *
 
+from myexceptions import *
 
 #Define the interval class 
 class interval:
@@ -14,6 +13,11 @@ class interval:
         
             # ensure input is string
             if (type(ui) is not str): 
+                raise NotStringException
+            
+            #make sure string is not empty
+            if len(ui)==0:
+                print len(ui),'len'
                 raise NotStringException
             
             #remove whitespace from user input for conformability
@@ -90,6 +94,8 @@ def mergeOverlapping(intervalstomerge):
     '''Returns a list of merged intervals'''
     merged=[]
     current=sortIntervals(intervalstomerge)[:]
+    if len(current)==0:
+        raise NotIntException
    
     while len(current)>1:
         if overlapCheck(current[0],current[1]):
