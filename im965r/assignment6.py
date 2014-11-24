@@ -18,27 +18,26 @@ if __name__=="__main__":
             print resultint
         except (NotStringException,InvalidBoundException,CommaException,NotIntException,IllegalRangeException,NoOverlapException) as e:
             print "Last input not valid \n"
-        except (KeyboardInterrupt) as e:
-            print "Caught a keyboard interrupt, to quit enter 'quit' \n"
+        except (KeyboardInterrupt, EOFError) as e:
+            print "Caught a keyboard interrupt or EOF, to quit enter 'quit' \n"
     if rawuserinp=='quit':
         print "........Goodbye!"
 
 
     while rawuserinp!="quit":
-        rawuserinp=str(raw_input("Interval? \n"))
-        if rawuserinp!="quit":
-            print 't'
-            try:
+        try:
+            rawuserinp=str(raw_input("Interval? \n"))
+            if rawuserinp!="quit":
                 new=interval(rawuserinp)
                 resultint=insert(resultint,new) 
                 print resultint
-            except (NotStringException,InvalidBoundException,CommaException,NotIntException,IllegalRangeException,NoOverlapException) as e:
-                print "Last input not valid \n"
-            except (KeyboardInterrupt) as e:
-               print "Caught a keyboard interrupt, to stop enter 'quit'"
+        except (NotStringException,InvalidBoundException,CommaException,NotIntException,IllegalRangeException,NoOverlapException) as e:
+            print "Last input not valid \n"
+        except (KeyboardInterrupt,EOFError) as e:
+            print "Caught a keyboard interrupt or EOF, to stop enter 'quit'"
             
-        else:
-            print "Final interval: "+ str(resultint) +"\n........Goodbye!" 
+    else:
+        print "Final interval: "+ str(resultint) +"\n........Goodbye!" 
 
            
             
