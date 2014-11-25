@@ -80,7 +80,7 @@ def mergeIntervals(int1,int2):
 
 def overlapCheck(intA,intB):
     '''Returns boolean to indicate if two intervals overlap'''
-    return (intA.leftreal<=intB.leftreal<=intA.rightreal) or (intB.leftreal<=intA.leftreal<=intB.rightreal) \
+    return (intA.leftreal<=intB.leftreal<=intA.rightreal+1) or (intB.leftreal<=intA.leftreal<=intB.rightreal+1) \
     or (intA.leftreal<=intB.leftreal and intB.rightreal<=intA.rightreal) or (intB.leftreal<=intA.leftreal and intA.rightreal<=intB.rightreal)
 
 def sortIntervals(intervalstosort):
